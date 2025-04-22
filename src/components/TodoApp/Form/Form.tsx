@@ -1,8 +1,13 @@
 import React from "react";
 
+interface ToDo {
+  id: string;
+  name: string;
+}
+
 interface Props {
-  todos: Array<string>;
-  setTodos: React.Dispatch<React.SetStateAction<string[]>>;
+  todos: Array<ToDo>;
+  setTodos: React.Dispatch<React.SetStateAction<Array<ToDo>>>;
 }
 
 export const Form = ({ setTodos, todos }: Props) => {
@@ -11,7 +16,7 @@ export const Form = ({ setTodos, todos }: Props) => {
     const form = new FormData(e.currentTarget);
     const newTodo = form.get("newTodo");
     if (typeof newTodo === "string") {
-      setTodos([...todos, newTodo]);
+      setTodos([...todos, { id: crypto.randomUUID(), name: newTodo }]);
     }
   };
 
