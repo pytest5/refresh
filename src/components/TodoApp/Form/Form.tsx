@@ -1,16 +1,7 @@
 import React from "react";
+import { TodoStateProps } from "../utils/types";
 
-interface ToDo {
-  id: string;
-  name: string;
-}
-
-interface Props {
-  todos: Array<ToDo>;
-  setTodos: React.Dispatch<React.SetStateAction<Array<ToDo>>>;
-}
-
-export const Form = ({ setTodos, todos }: Props) => {
+export const Form = ({ setTodos, todos }: TodoStateProps) => {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
